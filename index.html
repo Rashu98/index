@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>My Calculator</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <link href="Utils.css" rel="stylesheet" type="text/css" />
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+  html,
+  body {
+    height: 100%;
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+    background-color: black;
+  }
+
+  .button {
+    width: 66px;
+    padding: 20px;
+    margin: 0 3px;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 9px;
+    cursor: pointer;
+    color: white;
+    background-color: rgb(59, 49, 49);
+    font-size: large;
+  }
+
+  .row {
+    margin: 8px 0;
+  }
+
+  .row input {
+    font-size: 24px;
+    margin: 0;
+    padding: 10px 0px;
+    border: 2px solid rgb(227, 10, 10);
+    border-radius: 5px;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .bg-red {
+    background: red;
+  }
+
+  .mx-auto {
+    margin: auto;
+  }
+
+  .flex {
+    display: flex;
+  }
+
+  .flex-col {
+    flex-direction: column;
+  }
+
+  .items-center {
+    align-items: center;
+  }
+
+  h1 {
+    color: white;
+  }
+
+  .back {
+    color: rgb(255, 255, 255);
+    font-size: xx-large;
+    text-decoration: none;
+  }
+</style>
+
+<body>
+  <h1 class="text-center">My Personal Calculator</h1>
+
+  <div class="container flex flex-col items-center mx-auto m-w-20">
+    <div class="row">
+      <input class="text" type="text" />
+    </div>
+    <div class="row">
+      <button class="button" style="background-color: rgb(255, 0, 0);">Cls</button>
+      <button class="button" style="width: 140px; background-color: rgb(5, 141, 71);">=</button>
+      <button class="button" style="background-color: rgb(0, 132, 255);">-</button>
+    </div>
+    <div class="row">
+      <button class="button">7</button>
+      <button class="button">8</button>
+      <button class="button">9</button>
+      <button class="button" style="background-color: rgb(157, 0, 255);">*</button>
+    </div>
+    <div class="row">
+      <button class="button">4</button>
+      <button class="button">5</button>
+      <button class="button">6</button>
+      <button class="button" style="background-color: rgb(31, 7, 120);">/</button>
+    </div>
+    <div class="row">
+      <button class="button">1</button>
+      <button class="button">2</button>
+      <button class="button">3</button>
+      <button class="button" style="background-color: rgb(255, 0, 60);">.</button>
+    </div>
+    <div class="row">
+      <button class="button" style="width: 140px;">0</button>
+      <button class="button" style="width: 140px; background-color: rgb(162, 255, 0);">+</button>
+    </div>
+  </div>
+
+  <script>
+    let string = "";
+    let buttons = document.querySelectorAll('.button');
+    Array.from(buttons).forEach((button) => {
+      button.addEventListener('click', (e) => {
+        if (e.target.innerHTML == '=') {
+          string = eval(string);
+          document.querySelector('input').value = string;
+        }
+        else if (e.target.innerHTML == 'Cls') {
+          string = ""
+          document.querySelector('input').value = string;
+        }
+        else {
+          console.log(e.target)
+          string = string + e.target.innerHTML;
+          document.querySelector('input').value = string;
+        }
+      })
+    })
+
+    function backspace() {
+      var exp = document.container.text.value;
+      document.container.text.value = exp.substring(0, exp.length - 1);
+    }
+  </script>
+</body>
+
+</html>
